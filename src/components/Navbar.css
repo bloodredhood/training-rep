@@ -1,0 +1,20 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav {
+  grid-area: n;
+  background-color: rgb(198, 214, 243);
+  display: flex;
+  flex-direction: column;
+}
+
+.navItem {
+  padding: 10px;
+}
+
+.active {
+  background-color: rgb(68, 142, 238);
+  color: white;
+}
