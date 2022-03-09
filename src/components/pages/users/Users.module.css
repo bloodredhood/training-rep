@@ -1,9 +1,0 @@
-.selectedPage {
-  background-color: rgb(68, 142, 238);
-  color: white;
-}
-
-.containerForBreadCrumb {
-  display: flex;
-  flex-wrap: wrap;
-}
