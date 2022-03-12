@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Container = () => {
 
@@ -55,8 +56,8 @@ const Container = () => {
               : <ul style={{ listStyleType: "none" }}>
                 {state.map(guest => {
                   return guest.isVegan === false
-                  ? <li key={guest.name} >{guest.name}</li>
-                  : <li key={guest.name} style={{color: "limegreen"}} >{guest.name}</li>
+                  ? <li key={guest.name} ><NavLink to={`/${guest.name.replace(/\s/g, '')}`}>{guest.name}</NavLink></li>
+                  : <li key={guest.name} style={{color: "limegreen"}} ><NavLink to={`/${guest.name.replace(/\s/g, '')}`}>{guest.name}</NavLink></li>
                 })}
               </ul>
       }
