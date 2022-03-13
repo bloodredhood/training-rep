@@ -8,7 +8,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Container />} />
-        <Route path="/:guest_name" element={<Guest />} />
+        <Route path="/:guestIdx" element={<Guest />} />
       </Routes>
     </div>
   );

@@ -54,10 +54,10 @@ const Container = () => {
             : state.length === 0
               ? <button onClick={() => { setState(getCommonStateFunc(guests, diet)) }}>merge state</button>
               : <ul style={{ listStyleType: "none" }}>
-                {state.map(guest => {
+                {state.map((guest, idx) => {
                   return guest.isVegan === false
-                  ? <li key={guest.name} ><NavLink to={`/${guest.name.replace(/\s/g, '')}`}>{guest.name}</NavLink></li>
-                  : <li key={guest.name} style={{color: "limegreen"}} ><NavLink to={`/${guest.name.replace(/\s/g, '')}`}>{guest.name}</NavLink></li>
+                  ? <li key={idx} ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
+                  : <li key={idx} style={{color: "limegreen"}} ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
                 })}
               </ul>
       }
