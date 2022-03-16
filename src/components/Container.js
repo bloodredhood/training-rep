@@ -1,35 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { fetchDiet, fetchGuests } from "../api";
+import "./../App.css"
 
 const Container = (props) => {
 
-
-  //map(guest => guest.name).join(",").split(" ").join("%20") к мапу массива имен
   useEffect(() => {
-    if (guests.length === 0) {
+    if (props.guests.length === 0) {
       setTimeout(() => {
-        fetchGuests()
+        props.getAll()
       }, 1500);
     }
-  }, [guests])
+    console.log(props)
+  }, [props])
+
+//.then(() => {  const commonState = getCommonStateFunc(getState().app.guests, getState().app.diet)  dispatch(getCommonStateAC(commonState))})
 
   return (
     <>
       {
-        guests.length === 0
+        props.diet.length === 0
           ? "LOADING"
-          : diet.length === 0
-            ? <button onClick={() => { fetchDiet(guests) }}>check diet</button>
-            : state.length === 0
-              ? <button onClick={() => { setState(getCommonStateFunc(guests, diet)) }}>merge state</button>
-              : <ul style={{ listStyleType: "none" }}>
-                {state.map((guest, idx) => {
-                  return guest.isVegan === false
-                  ? <li key={idx} ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
-                  : <li key={idx} style={{color: "limegreen"}} ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
-                })}
-              </ul>
+          : props.commonState.length === 0
+            ?<button onClick={() => props.getCommonState(props.guests, props.diet)}> Join State</button>
+            : <ul style={{ listStyleType: "none"}}>
+            {props.commonState.map((guest, idx) => {
+              return guest.isVegan === false
+                ? <li key={idx} className="blackLink" ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
+                : <li key={idx} className="greenLink" ><NavLink to={`/${idx}`}>{guest.name}</NavLink></li>
+            })}
+          </ul>
       }
     </>
   )

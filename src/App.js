@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Container from './components/Container';
 import Guest from './components/Guest';
-import { getAll } from './redux/appReducer';
+import { getAll, getCommonState } from './redux/appReducer';
 import { BrowserRouter } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
@@ -20,10 +20,12 @@ function App(props) {
 }
 //need redux form of fromik
 const mapStateToProps = state => ({
+  guests: state.app.guests,
+  diet: state.app.diet,
   commonState: state.app.commonState
 })
 
-const AppContainer = connect(mapStateToProps, {getAll})(App)
+const AppContainer = connect(mapStateToProps, {getAll, getCommonState})(App)
 
 const PizzaSliceApp = () => {
   return (

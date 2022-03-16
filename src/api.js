@@ -31,3 +31,5 @@ export const getCommonStateFunc = (arr, arr1) => {
   }
   return arr2
 }
+
+//arr1[i].isVegan,

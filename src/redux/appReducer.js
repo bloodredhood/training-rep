@@ -12,16 +12,21 @@ export const getCommonStateAC = (commonState) => ({type: GET_COMMON_STATE, commo
 //ThunkCs
 export const getAll = () => async (dispatch, getState) => {
   const guests = await fetchGuests()
-  const prom = dispatch(fetchGuestsAC(guests))
-  Promise.all([prom])
-  .then(() => {
-    const diet = fetchDiet(getState().app.guests)
-    dispatch(fetchDietAC(diet))
-  })
-  .then(() => {
-    const commonState = getCommonStateFunc(getState().app.guests, getState().app.diet)
-    dispatch(getCommonStateAC(commonState))
-  })
+  dispatch(fetchGuestsAC(guests))
+  const setDiet = async(arr) => {
+    if (getState().app.guests === 0) {
+      setDiet(arr)
+    } else {
+      const diet = await fetchDiet(arr)
+      dispatch(fetchDietAC(diet))
+    }
+  }
+  setDiet(getState().app.guests)
+}
+
+export const getCommonState = (guests, diet) => async (dispatch) => {
+  const commonState = getCommonStateFunc(guests, diet)
+  dispatch(getCommonStateAC(commonState))
 }
 
 //const promise = dispatch(getAuthUserData())
