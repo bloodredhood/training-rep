@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { fetchDiet, fetchGuests } from "../api";
 
-const Container = () => {
-
-  const [guests, setGuests] = useState([])
-  const [diet, setDiet] = useState([])
-  const [state, setState] = useState([])
+const Container = (props) => {
 
 
   //map(guest => guest.name).join(",").split(" ").join("%20") к мапу массива имен
