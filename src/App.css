@@ -7,3 +7,23 @@
   color: black;
   text-decoration: none;
 }
+
+.forma {
+  background-color:aliceblue;
+  max-width: 250px;
+  height: 400px;
+  font-weight: 600;
+}
+
+.formTextGray {
+  color: dimgray;
+  font-size: 25px;
+}
+
+.formButton {
+  background-color:aquamarine;
+  border-radius: 0px;
+  border: 1px black solid;
+  width: 245px;
+  height: 30px
+}
