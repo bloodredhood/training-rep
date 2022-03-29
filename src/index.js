@@ -7,5 +7,3 @@ render(
   <PizzaSliceApp />,
   document.getElementById('root')
 );
-
-//need to connect there

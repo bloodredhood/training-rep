@@ -10,7 +10,7 @@ const Container = (props) => {
         props.getAll()
       }, 1500);
     }
-    console.log(props)
+    //console.log(props)
   }, [props])
 
 //.then(() => {  const commonState = getCommonStateFunc(getState().app.guests, getState().app.diet)  dispatch(getCommonStateAC(commonState))})

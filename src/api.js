@@ -22,6 +22,7 @@ export const getCommonStateFunc = (arr, arr1) => {
       eatsPizza: arr[i].eatsPizza,
       isVegan: arr1[i].isVegan,
       isPaid: false,
+      isSubmitted: false,
       formInfo: {
         rating: 0,
         phone: null,

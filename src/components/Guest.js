@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./../App.css"
 import { Rate } from "antd";
-import { Field, useFormik } from "formik"
+import { useFormik } from "formik"
 import * as Yup from "yup"
 
 //value={props.commonState[guestIdx].formInfo.rating}
@@ -16,21 +16,25 @@ const Guest = (props) => {
       comment: ""
     },
     validationSchema: Yup.object({
-      rating: Yup.number().required("Required"),
+      rating: Yup.number().min(1, "minimal is 1").max(5, "max is 5").required("Required"),
       phone: Yup.string(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[\s/0-9]*$/,
       "incorrect phone number format").min(3, "min length is 3").max(10, "max length is 10"
       ).required("Required"),
       comment: Yup.string()
     }),
     onSubmit: (values) => {
-      //dispatch to store
+      //need dispatch to store (contains stringified values and submitted flag)
+      console.log(JSON.stringify(values, null, 2))
     }
+    
   })
-  //console.log(props.commonState[guestIdx])
+  //formik.values.rating
+  //formik.values.phone
+  //formik.values.comment
   return (
-    <>
+    <div>
       {
-        props.commonState[guestIdx].formInfo.rating === 0
+        props.commonState[guestIdx].isSubmitted === false
           ? < form className="forma" onSubmit={formik.handleSubmit}>
             <label>NAME</label>
             <div className="formTextGray">{props.commonState[guestIdx].name}</div>
@@ -41,8 +45,7 @@ const Guest = (props) => {
             <div>
               <label htmlFor="phone">PHONE</label>
             </div>
-            <Field
-              as="input"
+            <input
               id="phone"
               name="phone"
               type="text"
@@ -53,8 +56,7 @@ const Guest = (props) => {
             <div>
               <label htmlFor="comment">COMMENT</label>
             </div>
-            <Field
-              as="textarea"
+            <textarea
               id="comment"
               name="comment"
               placeholder="comment"
@@ -83,7 +85,7 @@ const Guest = (props) => {
             </div>
           </div>
       }
-    </>
+    </div>
   )
 }
 
