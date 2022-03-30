@@ -10,7 +10,7 @@ import * as Yup from "yup"
 const Guest = (props) => {
   const { guestIdx } = useParams()
   const formik = useFormik({
-    inintialValues: {
+    initialValues: {
       rating: 0,
       phone: "",
       comment: ""
