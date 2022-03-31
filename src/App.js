@@ -18,7 +18,7 @@ function App(props) {
     </div>
   );
 }
-//need redux form of fromik
+//need redux form of formik
 const mapStateToProps = state => ({
   guests: state.app.guests,
   diet: state.app.diet,

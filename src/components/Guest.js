@@ -4,6 +4,7 @@ import "./../App.css"
 import { Rate } from "antd";
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { pushFormToState } from "../redux/appReducer";
 
 //value={props.commonState[guestIdx].formInfo.rating}
 
@@ -24,7 +25,8 @@ const Guest = (props) => {
     }),
     onSubmit: (values) => {
       //need dispatch to store (contains stringified values and submitted flag)
-      console.log(JSON.stringify(values, null, 2))
+      pushFormToState(guestIdx, values)
+      console.log(values)
     }
     
   })
